@@ -6,10 +6,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 public class main {
-    public static void zip(String rezipFile, String rezipFileName)
-    {
-
-    }
     public static void unzip(String zipPath, String zipFileName, String unzipPath)
     {
         File zipFile = new File(zipPath+zipFileName);
@@ -27,7 +23,7 @@ public class main {
 
             while ((zipentry = zis.getNextEntry()) != null)
             {
-                String unNormalFileName = zipentry.getName().replace(".txt.zip","");
+                String unNormalFileName = zipentry.getName().replaceAll("\\.[a-z]+","");
                 System.out.println("[NFD NAME] "+unNormalFileName);
                 String NormalFileName = normalizeNfc(unNormalFileName);
                 System.out.println("[NFC NAME] "+ NormalFileName);
